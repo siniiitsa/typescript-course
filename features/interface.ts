@@ -1,17 +1,18 @@
-interface Vehicle {
-  name: string;
-  year: number;
-  broken: boolean;
+interface Reportable {
+  getSummary(): string;
 }
 
 const oldCivic = {
   name: 'civic',
-  year: 1976,
+  year: new Date(),
   broken: true,
+  getSummary(): string {
+    return `A ${this.name}`;
+  },
 };
 
-const repareVehicle = (vehicle: Vehicle) => {
-  vehicle.broken = false;
+const printSummary = (item: Reportable): void => {
+  console.log(item.getSummary());
 };
 
-repareVehicle(oldCivic);
+printSummary(oldCivic);
